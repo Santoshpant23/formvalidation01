@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validate the form</title>
+  </head>
+  <body>
+    <form name="form" onsubmit="validate()">
+      Name:
+      <input type="text" name="name" placeholder="Enter Your Name" />
+      <br />
+      <br />
+      Email:
+      <input type="text" name="email" placeholder="Enter Email" />
+      <br />
+      <br />
+      Password : <input type="password" name="pass1" id="password" /> <br />
+      <br />
+      Re-Enter Password : <input type="password" name="pass2" /> <br />
+      <br />
+      <input type="submit" name="Submit" /> <br />
+      <br />
+      <input type="reset" name="Submit" />
+    </form>
+  </body>
+  <script>
+    function validate() {
+      let name = document.form.name.value;
+      let email = document.form.email.value;
+      let password1 = document.form.pass1.value;
+      let password2 = document.form.pass2.value;
+      if (name == "" || name.length > 20) {
+        alert("Name can't be blank and more than 20 characters");
+        return false;
+      }
+      if (password1 == "") {
+        alert("Password is needed");
+        return false;
+      }
+      if (password1 != password2) {
+        alert("It looks like password didn't matched");
+        return false;
+      }
+
+      if (email.includes(".") == false || email.includes("@") == false) {
+        alert("You are missing @ or '.' ");
+        return false;
+      }
+      if (
+        email.indexOf(".") != email.length - 3 &&
+        email.indexOf(".") != email.length - 4
+      ) {
+        alert("Invalid Position of '.'");
+        return false;
+      }
+    }
+  </script>
+</html>
